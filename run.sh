@@ -1,7 +1,7 @@
 echo -n "" > modules.xml
 echo "<a>" >> modules.xml
 
-for entry in `ls target/libs/*.jar`
+for entry in `(cd ./target/libs && ls *.jar)`
 do
   echo "  <b>$entry</b>" >> modules.xml
 done
