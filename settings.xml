@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- <localRepository>C:\DEVEL\Tools\Resources\maven\m2repo</localRepository> -->
+
+  <servers>
+    <server>
+      <id>garanti_artifactory</id>
+      <username>bpm-user</username>
+      <password>thisistheverybpmuser</password>
+    </server>
+    <server>
+      <id>bpm-snapshot</id>
+      <username>bpm-user</username>
+      <password>thisistheverybpmuser</password>
+    </server>
+  </servers>
+
+  <mirrors>
+    <mirror>
+      <id>releases</id>
+      <url>https://gtrepo.fw.garanti.com.tr/artifactory/libs-release</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+    <mirror>
+      <id>snapshots</id>
+      <url>https://gtrepo.fw.garanti.com.tr/artifactory/libs-snapshot</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+    
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>https://gtrepo.fw.garanti.com.tr/artifactory/libs-release</url>
+        </repository>
+        <repository>
+          <snapshots>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>https://gtrepo.fw.garanti.com.tr/artifactory/libs-snapshot</url>
+        </repository>
+        <repository>
+          <snapshots>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+          <id>bpm-snapshots</id>
+          <name>bpm-snapshot</name>
+          <url>https://gtrepo.fw.garanti.com.tr/artifactory/bpm-snapshot</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>https://gtrepo.fw.garanti.com.tr/artifactory/libs-release</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>https://gtrepo.fw.garanti.com.tr/artifactory/libs-snapshot</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+
+    <!-- define locally managed BusinessCentral Maven repo -->
+    <profile>
+      <id>guvnor_m2_repo_profile</id>
+      <repositories>
+        <repository>
+          <id>guvnor_m2_repo</id>
+          <url>http://localhost:8080/maven2/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+</settings>
